@@ -5166,21 +5166,51 @@ break
                 reply(`Sukses mengganti nama ke ${body.slice(9)}`)
                 break
 			case 'add':
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
+					if (!isGroup) return reply(mess.only.group)
+			if (!isGroupAdmins) return reply(mess.only.admin)
+			if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (args.length < 1) return reply('Yang mau di add jin ya? contoh .add 628...')
+					if (args[0].startsWith('08')) return reply('Gunakan kode negara mas contoh : 628..')
+					try {
+						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
+						denz.groupAdd(from, [num])
+					} catch (e) {
+						console.log('Error :', e)
+						reply('Gagal menambahkan target, mungkin karena di private')
+					}
+					break
+				case 'kick':
+					if (!isGroup) return reply(mess.only.group)
+			if (!isGroupAdmins) return reply(mess.only.admin)
+			if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang! contoh : @namatarget')
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						teks = 'Perintah di terima, mengeluarkan :\n'
+						for (let _ of mentioned) {
+							teks += `@${_.split('@')[0]}\n`
+						}
+						mentions(teks, mentioned, true)
+						denz.groupRemove(from, mentioned)
+					} else {
+						mentions(`Perintah di terima, mengeluarkan : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						denz.groupRemove(from, mentioned)
+					}
+					break
+			case 'ad':
 			if (!isGroup) return reply(mess.only.group)
-			if (!isGroupAdmins) return sticAdmin(from)
-			if (!isBotGroupAdmins) return sticNotAdmin(from)
-			if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply targetnya!')
+			if (!isGroupAdmins) return reply(mess.only.admin)
+			if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+			if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply Pesan Targetnya!')
 			add = mek.message.extendedTextMessage.contextInfo.participant
 		    denz.groupAdd(from, [add])
 				reply('Sukses menambahkan peserta')
 				break
-				case 'kick':
-              if (!isRegistered) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
+				case 'kik':
 			if (!isGroup) return reply(mess.only.group)
-			if (!isGroupAdmins) return sticAdmin(from)
-			if (!isBotGroupAdmins) return sticNotAdmin(from)
-			if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply targetnya!')
+			if (!isGroupAdmins) return reply(mess.only.admin)
+			if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+			if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply Pesan targetnya!')
 			kick = mek.message.extendedTextMessage.contextInfo.participant
 		    denz.groupRemove(from, [kick])
 						reply('Sukses mengeluarkan peserta')
