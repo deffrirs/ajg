@@ -1075,9 +1075,9 @@ Silahkan Pilih Untuk Menampilkan Menu
 Jika Button Tidak Muncul Ketik .allmenu`
 menu =`DEFFBOTz×`
 gbutsan = [
-{buttonId:`allmenu`,buttonText:{displayText:'📑SHOW MENU'},type:1},
-{buttonId:`owner`,buttonText:{displayText:'👑OWNER'},type:1},
-{buttonId:`script`,buttonText:{displayText:'🔖SCRIPT'},type:1}
+{buttonId:`allmenu`,buttonText:{displayText:'📑 SHOW MENU'},type:1},
+{buttonId:`command`,buttonText:{displayText:'📄 SIMPLE MENU'},type:1},
+{buttonId:`owner`,buttonText:{displayText:'👑 OWNER'},type:1}
 ]
 mhan = await denz.prepareMessage(from, ofrply, image, {thumbnail: ofrply})
 const btnmenu = {
@@ -1682,7 +1682,9 @@ menu = `❏ 「 \`\`\`MENU GROUP\`\`\` 」
 ├ ${prefix}delttt
 ├ ${prefix}getpp
 ├ ${prefix}kick [ _@tag_ ]
+├ ${prefix}kik [ _reply_ ]
 ├ ${prefix}add [ _nomor_ ]
+├ ${prefix}ad [ _reply_ ]
 ├ ${prefix}getdeskgc
 ├ ${prefix}sider [ _reply pesan bot_ ]
 ├ ${prefix}hacked [ _teks_ ]
