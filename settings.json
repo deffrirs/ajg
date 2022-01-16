@@ -3,6 +3,8 @@
 "autoplaymusic": true,
 "autocomposing": false,
 "autorecording": true,
+"auto_welcome_msg": true,
+"auto_leave_msg": true,
 "NamaBot":"×DEFFBOTz×", 
 "NomorOwner":"6282132805286", 
 "NamaOwner":"Deffri Gans", 
